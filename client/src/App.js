@@ -1,7 +1,10 @@
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import Header from './components/Header';
 import Clients from './components/Clients';
+import Projects from './components/Projects';
 import AddClientModal from './components/AddClientModal';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 const cache = new InMemoryCache({
   typePolicies: {
@@ -29,15 +32,16 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <>
+    <Router>
       <ApolloProvider client={client}>
         <Header />
         <div className='container'>
           <AddClientModal />
+          <Projects />
           <Clients />
         </div>
       </ApolloProvider>
-    </>
+    </Router>
   );
 }
 
