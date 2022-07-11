@@ -1,6 +1,5 @@
-const path = require('path');
 const express = require('express');
-const dotenv = require('dotenv').config();
+require('dotenv').config();
 require('colors');
 const cors = require('cors');
 const { graphqlHTTP } = require('express-graphql');
@@ -22,19 +21,5 @@ app.use(
     graphiql: process.env.NODE_ENV === 'development',
   })
 );
-
-// Serve Client
-if (process.env.NODE_ENV === 'production') {
-  // Set build folder as static
-  app.use(express.static(path.join(__dirname, '../client/build')));
-
-  app.get('*', (req, res) =>
-    res.sendFile(path.join(__dirname, '../client/build/index.html'))
-  );
-
-  server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
-    console.log(`🚀 Server ready at ${url}`);
-  });
-}
 
 app.listen(port, () => console.log(`Server running on PORT ${port}`));
