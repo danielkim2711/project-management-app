@@ -31,6 +31,10 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) =>
     res.sendFile(path.join(__dirname, '../client/build/index.html'))
   );
+
+  server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
+    console.log(`🚀 Server ready at ${url}`);
+  });
 }
 
 app.listen(port, () => console.log(`Server running on PORT ${port}`));
