@@ -4,6 +4,7 @@ import { GET_PROJECT } from '../queries/projectQueries';
 
 import ClientInfo from '../components/ClientInfo';
 import Spinner from '../components/Spinner';
+import EditProjectForm from '../components/EditProjectForm';
 import DeleteProjectButton from '../components/DeleteProjectButton';
 
 const Project = () => {
@@ -29,6 +30,7 @@ const Project = () => {
 
           <ClientInfo client={data.project.client} />
 
+          <EditProjectForm project={data.project} />
           <DeleteProjectButton projectId={data.project.id} />
         </div>
       )}
