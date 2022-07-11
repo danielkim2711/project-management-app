@@ -1,5 +1,5 @@
 const express = require('express');
-require('dotenv').config();
+const dotenv = require('dotenv').config();
 require('colors');
 const cors = require('cors');
 const { graphqlHTTP } = require('express-graphql');
