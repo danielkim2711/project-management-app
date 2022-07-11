@@ -22,4 +22,14 @@ app.use(
   })
 );
 
+// Serve Frontend
+if (process.env.NODE_ENV === 'production') {
+  // Set build folder as static
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.join(__dirname, '../frontend/build/index.html'))
+  );
+}
+
 app.listen(port, () => console.log(`Server running on PORT ${port}`));
